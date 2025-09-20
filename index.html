@@ -9,13 +9,10 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
-    /* Basic reset & variables */
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0;padding:0}
-    /*Enable smooth scrolling*/
-    html {
-  scroll-behavior: smooth;
-}
+    html{scroll-behavior:smooth}
+
     :root{
       --site-width:1200px;
       --color-primary:#222;
@@ -24,7 +21,8 @@
       --highlight:#ff3366;
       --dark-bg:#5B4D43;
     }
-    body{font-family:"Open Sans", Arial, sans-serif;color:var(--color-primary);background:#fff;line-height:1.6}
+
+    body{font-family:"Open Sans",Arial,sans-serif;color:var(--color-primary);background:#fff;line-height:1.6}
     h1,h2,h3,h4{font-family:"Playfair Display",serif;margin:0 0 12px 0}
     p{margin:0 0 14px 0;color:var(--color-secondary)}
     .container{max-width:var(--site-width);margin:0 auto;padding:0 20px;}
@@ -36,7 +34,15 @@
     .nav-links{display:flex;gap:22px}
     .nav-links a{text-decoration:none;color:var(--color-primary);font-weight:500}
     .mobile-toggle{display:none}
-    @media(max-width:768px){.nav-links{display:none;position:absolute;top:64px;right:20px;background:#fff;border:1px solid #eee;padding:10px;flex-direction:column;width:200px;box-shadow:0 8px 24px rgba(0,0,0,.08)}.nav-links.active{display:flex}.mobile-toggle{display:block}}
+    @media(max-width:768px){
+      .nav-links{display:none;position:absolute;top:64px;right:20px;background:#fff;border:1px solid #eee;padding:10px;flex-direction:column;width:200px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+      .nav-links.active{display:flex}
+      .mobile-toggle{display:block}
+      .logo {
+  padding-left: 15px;
+}
+
+    }
 
     /* Buttons */
     .btn-primary{display:inline-block;padding:12px 26px;border-radius:28px;background:var(--highlight);color:#fff;text-decoration:none;font-weight:600;transition:all .18s}
@@ -45,27 +51,37 @@
     .btn-white:hover{background:#f2f2f2}
 
     /* ABOUT */
-    .about-section{display:flex;gap:40px;align-items:center;padding:60px 0}
+    .about-section{display:flex;gap:40px;align-items:center;padding:60px 20px}
     .about-text{flex:1}
     .about-image{flex:1;display:flex;justify-content:center}
     .about-image img{width:654px;height:935px;object-fit:cover;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    @media(max-width:992px){.about-section{flex-direction:column;text-align:center}.about-image img{width:100%;height:auto;max-width:654px}}
+    @media(max-width:992px){
+      .about-section{flex-direction:column;text-align:center}
+      .about-image img{width:100%;height:auto;max-width:654px}
+    }
 
     /* ACCESS */
-    .access-section{display:flex;gap:80px;align-items:flex-start;padding:60px 0}
-    .access-text{flex:1;padding-left:80px;max-width:600px}
+    .access-section{display:flex;gap:40px;align-items:center;padding:60px 20px}
+    .access-text{flex:1;max-width:600px;margin:0 auto;text-align:left}
     .access-image{flex:0 0 auto;display:flex;justify-content:center}
     .access-image img{width:600px;height:400px;object-fit:cover;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    @media(max-width:992px){.access-section{flex-direction:column;text-align:center}.access-text{padding-left:50;max-width:100%}.access-image img{width:100%;height:400px;max-width:800px}}
+    @media(max-width:992px){
+      .access-section{flex-direction:column;text-align:center}
+      .access-text{text-align:center;max-width:100%}
+      .access-image img{width:100%;height:auto;max-width:400px}
+    }
 
     /* TESTIMONIALS */
-    .testimonials{padding:60px 0;text-align:center}
+    .testimonials{padding:60px 20px;text-align:center}
     .testimonials h2{font-size:32px;margin-bottom:28px}
     .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;justify-items:center;margin-bottom:18px}
     .video-block{width:100%;max-width:560px}
     .video-container{position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 6px 18px rgba(0,0,0,.12)}
     .video-container video{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
-    @media(max-width:768px){.video-grid{grid-template-columns:1fr}.video-block{max-width:100%}}
+    @media(max-width:768px){
+      .video-grid{grid-template-columns:1fr}
+      .video-block{max-width:100%}
+    }
     .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:26px}
     .image-grid img{width:100%;object-fit:cover;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
 
@@ -77,9 +93,35 @@
     .slide h3{color:#fff;margin-bottom:18px;font-size:1.6rem}
     .slide blockquote{color:#fff;font-style:italic;line-height:1.8;font-size:1.1rem;max-width:760px;margin:0 auto 12px}
     .slide .author{color:#e9e9e9;margin-top:10px;font-weight:600}
-    .prev,.next{position:absolute;top:50%;transform:translateY(-50%);border:none;background:rgba(255,255,255,.18);color:#fff;width:44px;height:44px;border-radius:22px;cursor:pointer;font-size:18px}
-    .prev{left:-60px}.next{right:-60px}
-    @media(max-width:768px){.prev,.next{left:12px;right:12px;bottom:-54px;top:auto;transform:none}}
+
+    /* FIXED ARROWS */
+    .prev,.next{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:#fff;
+      color:#333;
+      width:50px;height:50px;border-radius:50%;
+      cursor:pointer;
+      font-size:24px;font-weight:bold;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      transition:all 0.3s ease;
+      display:flex;align-items:center;justify-content:center;z-index:10;
+    }
+    .prev:hover,.next:hover{background:#ff3366;color:#fff}
+    .prev{left:-70px}
+    .next{right:-70px}
+    @media(max-width:768px){
+      .prev,.next{top:auto;bottom:-60px;transform:none}
+      .prev{left:25%}
+      .next{right:25%}
+    }
+
+    /* DOTS */
+    .dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#ccc;cursor:pointer;transition:background 0.3s ease;border:none;padding:0}
+    .dot.active{background:#ff3366}
 
     /* STEPS */
     .steps-wrapper{background:#fff;padding:56px 20px 0;text-align:center}
@@ -96,7 +138,7 @@
     @media(max-width:900px){.steps-grid{grid-template-columns:1fr;padding:0 14px}}
 
     /* Footer */
-    .site-footer{background:var(--accent);padding:40px 0;margin-top:30px}
+    .site-footer{background:var(--accent);padding:40px 20px;margin-top:30px}
     .footer-container{text-align:center;max-width:var(--site-width);margin:0 auto}
     .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:12px 0}
     .footer-links a{text-decoration:none;color:var(--color-secondary)}
@@ -108,20 +150,19 @@
   <header class="site-header">
     <div class="container nav-inner">
       <div class="logo"><a href="#">Sunpreet</a></div>
-      <nav class="nav-links" role="navigation" aria-label="Main navigation">
-        <!--<a href="#">Home</a>-->
+      <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#get-started">Get started</a>
       </nav>
-      <div class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
+      <div class="mobile-toggle">☰</div>
     </div>
   </header>
 
   <main>
     <!-- ABOUT -->
-    <section id="about" class="container about-section" role="region" aria-label="About">
+    <section id="about" class="container about-section">
       <div class="about-text">
         <h2>Better You Academy</h2>
         <p><strong>Better You</strong> is a personalized 1:1 coaching program designed to help you go from feeling stiff and locked up in your body to building strong, functional movement from the ground up. You'll develop a capable body so you can move better, feel better, and look your best.</p>
@@ -134,7 +175,7 @@
     </section>
 
     <!-- ACCESS -->
-    <section id="services" class="container access-section" role="region" aria-label="Services">
+    <section id="services" class="container access-section">
       <div class="access-text">
         <h2>GET ACCESS TO:</h2>
         <p><strong>1. Strength &amp; Mobility Programs</strong><br>Step-by-step training plans designed to build real strength, control, and flexibility.</p>
@@ -149,7 +190,7 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section id="testimonials" class="container testimonials" role="region" aria-label="Testimonials">
+    <section id="testimonials" class="container testimonials">
       <h2>Testimonials</h2>
       <div class="video-grid">
         <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"></video></div></div>
@@ -176,6 +217,7 @@
         <div class="slide"><h3>Olivia</h3><blockquote>Marie’s coaching gave me the confidence...</blockquote></div>
         <div class="slide"><h3>Kai</h3><blockquote>The ongoing support and structured program helped me stay consistent.</blockquote></div>
         <button class="prev">‹</button><button class="next">›</button>
+        <div class="dots"></div>
       </div>
     </section>
 
@@ -192,29 +234,23 @@
   </main>
 
   <!-- FOOTER -->
- <footer class="site-footer">
-  <div class="footer-container">
-    <div style="font-family:'Playfair Display';font-weight:700;font-size:1.1rem;margin-bottom:8px;">Sunpreet</div>
-    
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#get-started">Get Started</a>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div style="font-family:'Playfair Display';font-weight:700;font-size:1.1rem;margin-bottom:8px;">Sunpreet</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#get-started">Get Started</a>
+      </div>
+      <div style="margin:12px 0;">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div style="color:var(--color-secondary);margin-top:12px;">© 2025 Sunpreet. All rights reserved.</div>
     </div>
-
-    <div style="margin:12px 0;">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
-
-    <div style="color:var(--color-secondary);margin-top:12px;">
-      © 2025 Sunpreet. All rights reserved.
-    </div>
-  </div>
-</footer>
-
+  </footer>
 
   <script>
     // Mobile menu toggle
@@ -222,17 +258,38 @@
       document.querySelector('.nav-links').classList.toggle('active');
     });
 
-    // Slideshow
+    // Slideshow with dots + auto-scroll
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
+      const dotsContainer = document.querySelector('.dots');
+      const prev = document.querySelector('.prev');
+      const next = document.querySelector('.next');
       let idx = 0, auto;
-      function show(i){slides.forEach((s,si)=>s.classList.toggle('active',si===i))}
-      function start(){stop();auto=setInterval(()=>{idx=(idx+1)%slides.length;show(idx)},6000)}
-      function stop(){if(auto) clearInterval(auto)}
-      document.querySelector('.prev').onclick=()=>{idx=(idx-1+slides.length)%slides.length;show(idx)}
-      document.querySelector('.next').onclick=()=>{idx=(idx+1)%slides.length;show(idx)}
-      document.querySelector('.slideshow-container').onmouseenter=stop;
-      document.querySelector('.slideshow-container').onmouseleave=start;
+
+      // create dots
+      slides.forEach((_,i)=>{
+        const dot=document.createElement('button');
+        dot.classList.add('dot');
+        if(i===0) dot.classList.add('active');
+        dot.addEventListener('click',()=>{idx=i;show(idx);restart();});
+        dotsContainer.appendChild(dot);
+      });
+      const dots=document.querySelectorAll('.dot');
+
+      function show(i){
+        slides.forEach((s,si)=>s.classList.toggle('active',si===i));
+        dots.forEach((d,di)=>d.classList.toggle('active',di===i));
+      }
+      function start(){stop();auto=setInterval(()=>{idx=(idx+1)%slides.length;show(idx)},6000);}
+      function stop(){if(auto) clearInterval(auto);}
+      function restart(){stop();start();}
+
+      prev.addEventListener('click',()=>{idx=(idx-1+slides.length)%slides.length;show(idx);restart();});
+      next.addEventListener('click',()=>{idx=(idx+1)%slides.length;show(idx);restart();});
+
+      document.querySelector('.slideshow-container').addEventListener('mouseenter',stop);
+      document.querySelector('.slideshow-container').addEventListener('mouseleave',start);
+
       show(idx);start();
     });
   </script>
