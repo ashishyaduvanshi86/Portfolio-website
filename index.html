@@ -142,6 +142,45 @@
     .footer-container{text-align:center;max-width:var(--site-width);margin:0 auto}
     .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:12px 0}
     .footer-links a{text-decoration:none;color:var(--color-secondary)}
+
+   .before-after {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 10px; /* space between before & after */
+}
+
+.before-after img {
+  width: 100%;
+  height: 300px;       /* keep consistent height */
+  object-fit: cover;   /* crops neatly */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  position: relative;
+}
+
+/* Overlay labels */
+.before-after .label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Responsive labels */
+@media (max-width: 768px) {
+  .before-after .label {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -164,13 +203,15 @@
     <!-- ABOUT -->
     <section id="about" class="container about-section">
       <div class="about-text">
-        <h2>Better You Academy</h2>
-        <p><strong>Better You</strong> is a personalized 1:1 coaching program designed to help you go from feeling stiff and locked up in your body to building strong, functional movement from the ground up. You'll develop a capable body so you can move better, feel better, and look your best.</p>
+        <h2>Coaching That Sticks for Life</h2>
+        <p><strong>My coaching</strong> is a customized 1:1 program designed to help you unlock your physical and mental potential, with a focus on strength, mobility, rehab, injury prevention, and lifelong body awareness.
+I work 1:1 with a limited number of clients in person and online, so I am able to commit to and provide the level of energy and service to all my students.
+Book a free call and let’s get started!</p>
         <p>Book a free call and let’s get started!</p>
-        <a class="btn-primary" href="#">Book Free Call</a>
+        <a class="btn-primary" href="https://calendly.com/sunpreetsingh16/30min" target="_blank" rel="noopener noreferrer">Book Free Call</a>
       </div>
       <div class="about-image">
-        <img src="https://i.postimg.cc/s2Zzy5zK/DSC02506.jpg" alt="Better You Coaching">
+        <img src="https://i.postimg.cc/152wsCJr/ssP.jpg" alt="Better You Coaching">
       </div>
     </section>
 
@@ -178,11 +219,11 @@
     <section id="services" class="container access-section">
       <div class="access-text">
         <h2>GET ACCESS TO:</h2>
-        <p><strong>1. Strength &amp; Mobility Programs</strong><br>Step-by-step training plans designed to build real strength, control, and flexibility.</p>
-        <p><strong>2. Movement Routines for Any Setup</strong><br>Train effectively no matter where you are, whether you're in the gym, at home, or on the go.</p>
-        <p><strong>3. Skill Mastery Programs</strong><br>Master impressive skills like handstands, splits, bridges, and pistol squats.</p>
-        <p><strong>4. Ongoing Coaching &amp; Support</strong><br>Get direct access to me as your coach. Ask questions, get personalized feedback, and enjoy 24/7 support.</p>
-        <p><strong>Everything in one app!</strong></p>
+        <p><strong>1. Customised strength &amp; mobility Training Programs</strong><br>Step-by-step training plans focused on real strength, precise control, and lasting flexibility. Whether you’re a beginner or an experienced mover, my goal is to guide you with clear progressions, measurable gains, and coaching that’s with you every step of the way.</p>
+        <p><strong>2. Live Group Sessions</strong><br>Two live group Zoom sessions every week focused on Handstand and Splits training — giving you direct feedback and helping us track your progress step by step.</p>
+        <p><strong>3. Skill Training Programs</strong><br>Master impressive skills like Handstands, Splits, Pull-ups, and Pistol Squats. Each program guides you through challenging movements with clear, structured progressions.</p>
+        <p><strong>4. Feedbacks &amp; Support</strong><br>Please note, there is no team involved — you get direct access to me as your coach. Ask questions, receive personalized feedback, and join live sessions to stay motivated and make faster progress.</p>
+        <p><strong>We’ll have a chat so I can understand your goals, training history, and identify exactly what we need to work on.</strong></p>
       </div>
       <div class="access-image">
         <img src="https://i.postimg.cc/ZqBxY5CJ/DSC02319.jpg" alt="Access Image">
@@ -193,19 +234,31 @@
     <section id="testimonials" class="container testimonials">
       <h2>Testimonials</h2>
       <div class="video-grid">
-        <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"></video></div></div>
+        <div class="video-block"><div class="video-container"><video controls><source src="https://files.catbox.moe/fkxs6i.mp4"></video></div></div>
         <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"></video></div></div>
         <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video></div></div>
         <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"></video></div></div>
       </div>
       <div class="image-grid">
-        <img src="https://static.wixstatic.com/media/fbbecb_4d398252b8b940f3bd51b717f6a9b6b8~mv2.jpg/v1/fill/w_432,h_754,al_c,q_80,enc_auto/3.jpg" alt="">
-        <img src="https://static.wixstatic.com/media/fbbecb_6af8fa9abf05435e955640b8664b49f4~mv2.jpg/v1/fill/w_432,h_766,al_c,q_80,enc_auto/1.jpg" alt="">
-        <img src="https://static.wixstatic.com/media/fbbecb_a13bc14ee1d64106b7fdd47712adba58~mv2.png/v1/fill/w_446,h_792,al_c,q_85,enc_auto/Two.png" alt="">
-        <img src="https://static.wixstatic.com/media/fbbecb_40d08569dd78473ab9e9c1629b354f06~mv2.jpg/v1/fill/w_432,h_754,al_c,q_80,enc_auto/2.jpg" alt="">
-        <img src="https://static.wixstatic.com/media/fbbecb_dd0be07ca3314b91992aa36aebc27a68~mv2.jpg/v1/fill/w_432,h_766,al_c,q_80,enc_auto/4.jpg" alt="">
-        <img src="https://static.wixstatic.com/media/fbbecb_7b5f4df0677845ba96d053d9f8d95e3b~mv2.png/v1/fill/w_458,h_802,al_c,q_90,enc_auto/Two.png" alt="">
-      </div>
+  <!-- Before & After Pair -->
+  <div class="before-after">
+  <img src="https://i.postimg.cc/DZLZqhGx/Before1.jpg" alt="Before">
+  <img src="https://i.postimg.cc/NFt0Dn7B/After-1.jpg" alt="After">
+  </div>
+
+  <!-- Another Before & After Pair -->
+  <div class="before-after">
+    <img src="https://i.postimg.cc/mkSg5S8M/Before-2-Edited.png" alt="Before">
+    <img src="https://i.postimg.cc/GpZt8t4B/After-2.jpg" alt="After">
+  </div>
+
+  <!-- Another Before & After Pair -->
+  <div class="before-after">
+    <img src="https://static.wixstatic.com/media/fbbecb_dd0be07ca3314b91992aa36aebc27a68~mv2.jpg/v1/fill/w_432,h_766,al_c,q_80,enc_auto/4.jpg" alt="Before">
+    <img src="https://static.wixstatic.com/media/fbbecb_7b5f4df0677845ba96d053d9f8d95e3b~mv2.png/v1/fill/w_458,h_802,al_c,q_90,enc_auto/Two.png" alt="After">
+  </div>
+</div>
+
     </section>
 
     <!-- SLIDESHOW -->
@@ -229,7 +282,7 @@
         <div class="step"><div class="step-number">2</div><h3>WE WILL HAVE A NICE CHAT</h3><p>We'll have a chat so I can understand more about your situation.</p></div>
         <div class="step"><div class="step-number">3</div><h3>YOU ARE READY TO GO!</h3><p>You are ready to start the journey towards a healthier body.</p></div>
       </div>
-      <div class="steps-btn"><a class="btn-white" href="https://calendly.com/marierisvik/premium-coaching-free-call" target="_blank">JOIN NOW!</a></div>
+      <div class="steps-btn"><a class="btn-primary" href="https://calendly.com/sunpreetsingh16/30min" target="_blank" rel="noopener noreferrer">JOIN NOW!</a></div>
     </section>
   </main>
 
