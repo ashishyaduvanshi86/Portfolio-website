@@ -3,29 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sunpreet</title>
+  <title>Sunpreet Singh Coaching</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
 
   <style>
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0;padding:0}
     html{scroll-behavior:smooth}
 
-    :root{
-      --site-width:1200px;
-      --color-primary:#222;
-      --color-secondary:#555;
-      --accent:#f2f2f2;
-      --highlight:#ff3366;
-      --dark-bg:#5B4D43;
-    }
+    :root {
+  --site-width: 1200px;
+  --color-primary: #222;
+  --color-secondary: #555;
+  --accent: #f2f2f2;
+  --highlight: #ff3366;
+  --dark-bg: #5B4D43;       /* Primary */
+  --dark-bg-alt: #6A5C50;   /* Secondary (slightly lighter/darker shade) */
+}
 
-    body{font-family:"Open Sans",Arial,sans-serif;color:var(--color-primary);background:#fff;line-height:1.6}
+
+    body{font-family:"Open Sans",Arial,sans-serif;color:var(--color-primary);background:#fff8f1;line-height:1.6}
     h1,h2,h3,h4{font-family:"Playfair Display",serif;margin:0 0 12px 0}
     p{margin:0 0 14px 0;color:var(--color-secondary)}
     .container{max-width:var(--site-width);margin:0 auto;padding:0 20px;}
+
+    /* logo header section*/
+    .logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+  background: transparent; /* ensures no background is applied */
+}
+
+@media(max-width:768px){
+  .logo img {
+    height: 60px;       /* smaller for mobile */
+  }
+}
+
 
     /* Header */
     .site-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:1000}
@@ -35,14 +53,27 @@
     .nav-links a{text-decoration:none;color:var(--color-primary);font-weight:500}
     .mobile-toggle{display:none}
     @media(max-width:768px){
-      .nav-links{display:none;position:absolute;top:64px;right:20px;background:#fff;border:1px solid #eee;padding:10px;flex-direction:column;width:200px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-      .nav-links.active{display:flex}
-      .mobile-toggle{display:block}
-      .logo {
-  padding-left: 15px;
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:64px;
+    right:20px;
+    background:#fff;
+    border:1px solid #eee;
+    padding:10px;
+    flex-direction:column;
+    width:200px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08)
+  }
+  .nav-links.active{display:flex}
+  .mobile-toggle{
+    display:block;
+    margin-right:15px;   /* 👈 pushes the menu icon inside */
+  }
+  .logo{
+    padding-left:15px;
+  }
 }
-
-    }
 
     /* Buttons */
     .btn-primary{display:inline-block;padding:12px 26px;border-radius:28px;background:var(--highlight);color:#fff;text-decoration:none;font-weight:600;transition:all .18s}
@@ -84,44 +115,162 @@
     }
     .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:26px}
     .image-grid img{width:100%;object-fit:cover;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+    
 
-    /* SLIDESHOW */
-    .slideshow-section{background:var(--dark-bg);padding:80px 20px;color:#fff}
-    .slideshow-container{max-width:900px;margin:0 auto;position:relative}
-    .slide{display:none;text-align:center;max-width:820px;margin:0 auto;padding:40px 24px}
-    .slide.active{display:block}
-    .slide h3{color:#fff;margin-bottom:18px;font-size:1.6rem}
-    .slide blockquote{color:#fff;font-style:italic;line-height:1.8;font-size:1.1rem;max-width:760px;margin:0 auto 12px}
-    .slide .author{color:#e9e9e9;margin-top:10px;font-weight:600}
+    /* -----------------------------
+       SLIDESHOW — UPDATED
+       ----------------------------- */
 
-    /* FIXED ARROWS */
-    .prev,.next{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      border:none;
-      background:#fff;
-      color:#333;
-      width:50px;height:50px;border-radius:50%;
-      cursor:pointer;
-      font-size:24px;font-weight:bold;
-      box-shadow:0 4px 12px rgba(0,0,0,0.4);
-      transition:all 0.3s ease;
-      display:flex;align-items:center;justify-content:center;z-index:10;
-    }
-    .prev:hover,.next:hover{background:#ff3366;color:#fff}
-    .prev{left:-70px}
-    .next{right:-70px}
-    @media(max-width:768px){
-      .prev,.next{top:auto;bottom:-60px;transform:none}
-      .prev{left:25%}
-      .next{right:25%}
-    }
+.slideshow-section {
+  background: var(--dark-bg);
+  padding: 80px 0;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: background 1s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    /* DOTS */
-    .dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
-    .dot{width:10px;height:10px;border-radius:50%;background:#ccc;cursor:pointer;transition:background 0.3s ease;border:none;padding:0}
-    .dot.active{background:#ff3366}
+/* when toggled, section briefly shows alt background (used in JS) */
+.slideshow-section.bg-alt {
+  background: var(--dark-bg-alt);
+}
+
+/* Smooth dynamic height change (transition on min-height) */
+.slideshow-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 380px;  /* base height */
+  padding-bottom: 60px; /* space for dots */
+  transition: min-height 0.45s cubic-bezier(.2,.9,.3,1);
+}
+
+/* Mobile: allow more vertical space if needed; dots will flow beneath slides */
+@media (max-width: 768px) {
+  .slideshow-container {
+    min-height: 520px;
+    padding-bottom: 28px;
+  }
+  .dots {
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    width: auto !important;
+    margin-top: 20px;
+    bottom: auto !important;
+    display:flex;
+    justify-content:center;
+  }
+}
+
+/* Fade effect slides (unchanged) */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide h3 {
+  color: #fff;
+  margin-bottom: 18px;
+  font-size: 1.6rem;
+}
+.slide blockquote {
+  color: #fff;
+  font-style: italic;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  max-width: 760px;
+  margin: 0 auto 12px;
+}
+.slide .author {
+  color: #e9e9e9;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Arrows — ALWAYS visible, placed 20px from corners */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+  font-size: 22px;
+  font-weight: bold;
+  opacity: 1; /* always visible */
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+.prev:hover, .next:hover { background: var(--highlight); color: #fff; }
+.prev { left: -250px; }   /* 20px padding from corners */
+.next { right: -250px; }
+
+@media(max-width:768px){
+  .prev, .next {
+    top: auto;
+    bottom: -60px;
+    transform: none;
+  }
+  .prev { left: 25%; }
+  .next { right: 25%; }
+}
+
+/* Dots — positioned by JS to match the slide column center */
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+  z-index: 20;
+  position: absolute;   /* JS will set left + transform to center under slide */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.dot.active {
+  background: var(--highlight);
+  transform: scale(1.2);
+}
 
     /* STEPS */
     .steps-wrapper{background:#fff;padding:56px 20px 0;text-align:center}
@@ -143,41 +292,140 @@
     .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:12px 0}
     .footer-links a{text-decoration:none;color:var(--color-secondary)}
 
-   .before-after {
-  display: flex;
-  flex-direction: column; /* stack vertically */
-  gap: 10px; /* space between before & after */
+   /* BEFORE/AFTER SLIDER (desktop: horizontal slider; mobile: stacked) */
+.before-after-slider{
+  position:relative;
+  max-width:1100px;
+  margin:0 auto;
+  overflow:hidden;
+  border-radius:10px;
+  background:transparent;
+}
+.ba-track{
+  display:flex;
+  width:100%;
+  transition:transform .8s ease;
+  will-change:transform;
+}
+.before-after{
+  flex:0 0 100%;
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.img-wrapper{position:relative;flex:1}
+.img-wrapper img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  display:block;
+}
+.img-wrapper .label{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:rgba(0,0,0,0.7);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  padding:6px 8px;
+  border-radius:6px;
+  text-transform:uppercase;
+}
+/* BA controls */
+.ba-prev,.ba-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#fff;
+  border:0;
+  width:44px;
+  height:44px;
+  border-radius:22px;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:12;
+}
+.ba-prev{left:8px}
+.ba-next{right:8px}
+.ba-prev:hover,.ba-next:hover{background:var(--highlight);color:#fff}
+.ba-dots{display:flex;gap:8px;justify-content:center;padding:14px 0}
+.ba-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ddd;
+  border:0;
+  cursor:pointer
+}
+.ba-dot.active{background:var(--highlight)}
+
+/* Before/After desktop sizing */
+.before-after {
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.before-after img {
+.img-wrapper img {
   width: 100%;
-  height: 300px;       /* keep consistent height */
-  object-fit: cover;   /* crops neatly */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.12);
-  position: relative;
+  height: 450px;   /* increased from 300px → makes them larger */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
 }
 
-/* Overlay labels */
-.before-after .label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
 
-/* Responsive labels */
-@media (max-width: 768px) {
-  .before-after .label {
-    font-size: 12px;
-    padding: 3px 6px;
+/* Mobile behaviour: pairs side-by-side, stacked vertically */
+@media(max-width:768px){
+  .before-after-slider {
+    overflow: visible;   /* allow full height */
   }
+  .ba-track {
+    display: block;      /* break slider into stacked pairs */
+    transform: none !important;
+  }
+  .before-after {
+    flex-direction: row;   /* keep Before & After side by side */
+    justify-content: center;
+    align-items: stretch;  /* make both images equal height */
+    gap: 10px;
+    padding: 12px 0;
+  }
+  .img-wrapper {
+    flex: 1;             /* both Before & After take equal width */
+    display: flex;
+  }
+  .img-wrapper img {
+    width: 100%;
+    height: 200px;        /* fixed equal height for all pairs */
+    object-fit: cover;    /* crops neatly */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  }
+  .ba-prev, .ba-next,
+  .ba-dots {
+    display: none !important; /* hide slider controls on mobile */
+  }
+}
+/* Footer social icons */
+.social-icons a {
+  font-size: 24px;
+  margin: 0 10px;
+  color: var(--color-secondary);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.social-icons a:hover {
+  color: var(--highlight);
+  transform: scale(1.2);
 }
 
 
@@ -188,7 +436,7 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-inner">
-      <div class="logo"><a href="#">Sunpreet</a></div>
+      <div class="logo"><a href="#"><img src="https://i.postimg.cc/J7DZsvth/SSCH.png" alt = "Sunpreet Singh Coaching logo"></a></div>
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -203,10 +451,10 @@
     <!-- ABOUT -->
     <section id="about" class="container about-section">
       <div class="about-text">
-        <h2>Coaching That Sticks for Life</h2>
+        <h2>Coaching That Sticks for Life</h2>
         <p><strong>My coaching</strong> is a customized 1:1 program designed to help you unlock your physical and mental potential, with a focus on strength, mobility, rehab, injury prevention, and lifelong body awareness.
 I work 1:1 with a limited number of clients in person and online, so I am able to commit to and provide the level of energy and service to all my students.
-Book a free call and let’s get started!</p>
+Book a free call and let’s get started!</p>
         <p>Book a free call and let’s get started!</p>
         <a class="btn-primary" href="https://calendly.com/sunpreetsingh16/30min" target="_blank" rel="noopener noreferrer">Book Free Call</a>
       </div>
@@ -218,12 +466,12 @@ Book a free call and let’s get started!</p>
     <!-- ACCESS -->
     <section id="services" class="container access-section">
       <div class="access-text">
-        <h2>GET ACCESS TO:</h2>
-        <p><strong>1. Customised strength &amp; mobility Training Programs</strong><br>Step-by-step training plans focused on real strength, precise control, and lasting flexibility. Whether you’re a beginner or an experienced mover, my goal is to guide you with clear progressions, measurable gains, and coaching that’s with you every step of the way.</p>
-        <p><strong>2. Live Group Sessions</strong><br>Two live group Zoom sessions every week focused on Handstand and Splits training — giving you direct feedback and helping us track your progress step by step.</p>
-        <p><strong>3. Skill Training Programs</strong><br>Master impressive skills like Handstands, Splits, Pull-ups, and Pistol Squats. Each program guides you through challenging movements with clear, structured progressions.</p>
-        <p><strong>4. Feedbacks &amp; Support</strong><br>Please note, there is no team involved — you get direct access to me as your coach. Ask questions, receive personalized feedback, and join live sessions to stay motivated and make faster progress.</p>
-        <p><strong>We’ll have a chat so I can understand your goals, training history, and identify exactly what we need to work on.</strong></p>
+        <h2>GET ACCESS TOO:</h2>
+        <p><strong>1. Customised strength &amp; mobility Training Programs</strong><br>Step-by-step training plans focused on real strength, precise control, and lasting flexibility. Whether you’re a beginner or an experienced mover, my goal is to guide you with clear progressions, measurable gains, and coaching that’s with you every step of the way.</p>
+        <p><strong>2. Live Group Sessions</strong><br>Two live group Zoom sessions every week focused on Handstand and Splits training — giving you direct feedback and helping us track your progress step by step.</p>
+        <p><strong>3. Skill Training Programs</strong><br>Master impressive skills like Handstands, Splits, Pull-ups, and Pistol Squats. Each program guides you through challenging movements with clear, structured progressions.</p>
+        <p><strong>4. Feedbacks &amp; Support</strong><br>Please note, there is no team involved — you get direct access to me as your coach. Ask questions, receive personalized feedback, and join live sessions to stay motivated and make faster progress.</p>
+        <p><strong>We’ll have a chat so I can understand your goals, training history, and identify exactly what we need to work on.</strong></p>
       </div>
       <div class="access-image">
         <img src="https://i.postimg.cc/ZqBxY5CJ/DSC02319.jpg" alt="Access Image">
@@ -234,45 +482,54 @@ Book a free call and let’s get started!</p>
     <section id="testimonials" class="container testimonials">
       <h2>Testimonials</h2>
       <div class="video-grid">
-        <div class="video-block"><div class="video-container"><video controls><source src="https://files.catbox.moe/fkxs6i.mp4"></video></div></div>
-        <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"></video></div></div>
-        <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video></div></div>
-        <div class="video-block"><div class="video-container"><video controls><source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"></video></div></div>
+        <div class="video-block"><div class="video-container"><video controls><source src="https://files.catbox.moe/2j69i0.mov"></video></div></div>
+        <div class="video-block"><div class="video-container"><video controls><source src="https://files.catbox.moe/2fpk6k.mov"></video></div></div>
       </div>
       <div class="image-grid">
   <!-- Before & After Pair -->
-  <div class="before-after">
-  <img src="https://i.postimg.cc/DZLZqhGx/Before1.jpg" alt="Before">
-  <img src="https://i.postimg.cc/NFt0Dn7B/After-1.jpg" alt="After">
-  </div>
-
-  <!-- Another Before & After Pair -->
-  <div class="before-after">
-    <img src="https://i.postimg.cc/mkSg5S8M/Before-2-Edited.png" alt="Before">
-    <img src="https://i.postimg.cc/GpZt8t4B/After-2.jpg" alt="After">
-  </div>
-
-  <!-- Another Before & After Pair -->
-  <div class="before-after">
-    <img src="https://static.wixstatic.com/media/fbbecb_dd0be07ca3314b91992aa36aebc27a68~mv2.jpg/v1/fill/w_432,h_766,al_c,q_80,enc_auto/4.jpg" alt="Before">
-    <img src="https://static.wixstatic.com/media/fbbecb_7b5f4df0677845ba96d053d9f8d95e3b~mv2.png/v1/fill/w_458,h_802,al_c,q_90,enc_auto/Two.png" alt="After">
+  <div class="image-grid">
+  <div class="before-after-slider">
+    <div class="ba-track">
+      <div class="before-after">
+        <div class="img-wrapper"><img src="https://i.postimg.cc/DZLZqhGx/Before1.jpg"><span class="label">Before</span></div>
+        <div class="img-wrapper"><img src="https://i.postimg.cc/NFt0Dn7B/After-1.jpg"><span class="label">After</span></div>
+      </div>
+      <div class="before-after">
+        <div class="img-wrapper"><img src="https://i.postimg.cc/BQXBstfh/2.png"><span class="label">Before</span></div>
+        <div class="img-wrapper"><img src="https://i.postimg.cc/GpZt8t4B/After-2.jpg"><span class="label">After</span></div>
+      </div>
+      <div class="before-after">
+        <div class="img-wrapper"><img src="https://i.postimg.cc/Qd1CkqsQ/Before-3.jpg"><span class="label">Before</span></div>
+        <div class="img-wrapper"><img src="https://i.postimg.cc/rwxsC9cJ/After-3.jpg"><span class="label">After</span></div>
+      </div>
+    </div>
+    <button class="ba-prev">‹</button>
+    <button class="ba-next">›</button>
+    <div class="ba-dots"></div>
   </div>
 </div>
 
-    </section>
+   </section>
 
-    <!-- SLIDESHOW -->
-    <section class="slideshow-section">
-      <div class="slideshow-container">
-        <div class="slide active"><h3>Stein Raymond</h3><blockquote>Very satisfied with the training program with Marie!</blockquote><div class="author">Insta: rayruu</div></div>
-        <div class="slide"><h3>Raymond</h3><blockquote>Amazing progress thanks to Marie’s structured approach!</blockquote></div>
-        <div class="slide"><h3>Martine</h3><blockquote>I loved the personalized feedback and guidance.</blockquote></div>
-        <div class="slide"><h3>Olivia</h3><blockquote>Marie’s coaching gave me the confidence...</blockquote></div>
-        <div class="slide"><h3>Kai</h3><blockquote>The ongoing support and structured program helped me stay consistent.</blockquote></div>
-        <button class="prev">‹</button><button class="next">›</button>
-        <div class="dots"></div>
-      </div>
-    </section>
+<!-- SLIDESHOW -->
+<section class="slideshow-section">
+  <div class="slideshow-container">
+    <div class="slide active"><h3>Harshita Sethi</h3><blockquote>It's only been a month but training with you has already made such a huge difference.It's been really fun exploring things l'd never have tried. Really enjoying the process and learning from you has been great.</blockquote><div class="author">Insta: harshitaasethi</div></div>
+    <div class="slide active"><h3>Zaveri Gauri</h3><blockquote>Sunpreet you are an exceptional fitness trainer!It's been 6 months training with you & have helped me gain confidence in handstands.I've gained significant muscle mass and lost almost 7kgs. Your training style is engaging, supportive, and tailored to individual needs.I'm grateful for your expertise and enthusiasm - highly recommend!!!!</blockquote><div class="author">Insta: zaverigauri</div></div>
+    <div class="slide active"><h3>Ankanasha</h3><blockquote>I've been training with Sunpreet for around 6 months now, and it's been a total game-changer! The workouts are tailored to my capabilities but still push me to grow. I've become so much more confident with inversions-something I never imagined doing. His ability to catch the smallest nuances, even through videos, is truly commendable. He's very responsive and has such an approachable vibe that I always feel comfortable asking questions about the exercises.</blockquote><div class="author">Insta: ankanashah</div></div>
+    <div class="slide active"><h3>Eeshan Agarwal</h3><blockquote>Excited to be training with you! I can already see changes in my strength and mobility and it's only been a couple of weeks! Btw, a huge fan of your inversion sessions - always look forward to them and getting inspired to push harder :)</blockquote><div class="author">Insta: eeshanagarwal</div></div>
+    <div class="slide active"><h3>Sheryl Sahni </h3><blockquote>Don't even know where to start talking about your training except that everyone should come to you STAT. Building strength, learning skills and mobility and overcoming tear or inversions trom you has been so tun and incredible- it's also changed my other movements especially as a dancer. I feel stronger and safer as my body feels more stable now and it helps me in injury prevention.</blockquote><div class="author">Insta: sheryl.sahni</div></div>
+    <div class="slide active"><h3>Soumya</h3><blockquote>It's been a year training with you. Started off to fix multiple injuries and now I feel so much stronger and barely have any pain.The workouts are so well thought out and holistic. Honestly, kinda addicted to them now!</blockquote><div class="author">Insta: soumyashiremathyoga108</div></div>
+    <div class="slide active"><h3>Ipsita Prakash</h3><blockquote>It's been a month of training with Sunpreet and I am hooked to the workouts. My body and mind have been rewired to be stronger and try out challenges that i would only dream of. Love every minute of the training.</blockquote><div class="author">Insta: ipsita.prakash</div></div>
+    <div class="slide active"><h3>Prakruti</h3><blockquote>Training with sunpreet is like a dream, extremely unique with a variety if variations, you can never get bored. I find working out in a traditional gym / HIIT / cardio style workouts extremely mainstream and boring. But everything that i have trained with and am training with sunpreet is so challenging, skill based, that i look forward to my next workout & keep waiting to learn new skills everytime.</blockquote><div class="author">Insta: prakrutismantra</div></div>
+    <div class="slide active"><h3>Devanshi bhatt </h3><blockquote>Training with you doesn't feel like a chore. I look forward to the workouts and l've unlocked more skills in a month than I did in 3 otherwise. Thank you for making it easy and fun.</blockquote><div class="author">Insta: devanshisbhatt</div></div>
+    <div class="slide active"><h3>Ipsita chaudhari</h3><blockquote>I've been training with you since 3 months now and it has been nothing but incredible! I never thought I could do even one handstand also but the ease with which you teach just makes it all feel so easy. Love how the workouts are a mix of mobility & strength training. You have the most positive and encouraging vibe !!! Looking forward to more training sessions.</blockquote><div class="author">Insta: ipsitachaudhari28</div></div>
+    <button class="prev">‹</button><button class="next">›</button>
+
+    <!-- dots (will be populated & positioned by JS) -->
+    <div class="dots"></div>
+  </div>
+</section>
 
     <!-- STEPS -->
     <div id="get-started" class="steps-wrapper"><div class="container"><h2 class="steps-title">Get started with three simple steps:</h2></div></div>
@@ -296,55 +553,218 @@ Book a free call and let’s get started!</p>
         <a href="#testimonials">Testimonials</a>
         <a href="#get-started">Get Started</a>
       </div>
-      <div style="margin:12px 0;">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-      </div>
+      <div class="social-icons">
+  <a href="https://instagram.com/sunpreet_sing/" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@sunpreet_sing" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+</div>
       <div style="color:var(--color-secondary);margin-top:12px;">© 2025 Sunpreet. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
-    document.querySelector('.mobile-toggle').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
+  // =========================
+  // Mobile menu toggle
+  // =========================
+  document.querySelector('.mobile-toggle').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+  });
 
-    // Slideshow with dots + auto-scroll
-    document.addEventListener('DOMContentLoaded', () => {
-      const slides = document.querySelectorAll('.slide');
-      const dotsContainer = document.querySelector('.dots');
-      const prev = document.querySelector('.prev');
-      const next = document.querySelector('.next');
-      let idx = 0, auto;
+  // =========================
+  // Testimonial Slideshow (FADE + section background fade)
+  // Dots: created + positioned to exactly match the slide text column center
+  // Smooth min-height transitions for the container so content doesn't jump
+  // =========================
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.slideshow-container');
+    if (!container) return; // safety
 
-      // create dots
-      slides.forEach((_,i)=>{
-        const dot=document.createElement('button');
-        dot.classList.add('dot');
-        if(i===0) dot.classList.add('active');
-        dot.addEventListener('click',()=>{idx=i;show(idx);restart();});
-        dotsContainer.appendChild(dot);
+    const section = document.querySelector('.slideshow-section');
+    const slides = Array.from(container.querySelectorAll('.slide'));
+    const prev = container.querySelector('.prev');
+    const next = container.querySelector('.next');
+    const dotsWrap = container.querySelector('.dots'); // exists in markup
+    const FADE_MS = 1000; // keep matching CSS
+
+    // determine starting index: prefer the first slide that already has .active in markup
+    let idx = slides.findIndex(s => s.classList.contains('active'));
+    if (idx < 0) idx = 0;
+
+    // build dots
+    dotsWrap.innerHTML = '';
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dot' + (i === idx ? ' active' : '');
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.addEventListener('click', () => {
+        goTo(i);
+        restart();
       });
-      const dots=document.querySelectorAll('.dot');
-
-      function show(i){
-        slides.forEach((s,si)=>s.classList.toggle('active',si===i));
-        dots.forEach((d,di)=>d.classList.toggle('active',di===i));
-      }
-      function start(){stop();auto=setInterval(()=>{idx=(idx+1)%slides.length;show(idx)},6000);}
-      function stop(){if(auto) clearInterval(auto);}
-      function restart(){stop();start();}
-
-      prev.addEventListener('click',()=>{idx=(idx-1+slides.length)%slides.length;show(idx);restart();});
-      next.addEventListener('click',()=>{idx=(idx+1)%slides.length;show(idx);restart();});
-
-      document.querySelector('.slideshow-container').addEventListener('mouseenter',stop);
-      document.querySelector('.slideshow-container').addEventListener('mouseleave',start);
-
-      show(idx);start();
+      dotsWrap.appendChild(b);
     });
-  </script>
+    const dots = Array.from(dotsWrap.children);
+
+    // helper: position dots centered under the active slide column
+    function positionDotsForSlide(i) {
+      // on small screens we let CSS place dots normally (relative)
+      if (window.innerWidth <= 768) {
+        dotsWrap.style.position = '';
+        dotsWrap.style.left = '';
+        dotsWrap.style.transform = '';
+        dotsWrap.style.bottom = '';
+        dotsWrap.style.width = '';
+        return;
+      }
+
+      const slide = slides[i] || slides[0];
+      if (!slide) return;
+
+      // ensure layout is up-to-date
+      const containerRect = container.getBoundingClientRect();
+      const slideRect = slide.getBoundingClientRect();
+
+      // compute the center of the slide relative to the container
+      const slideCenterX = (slideRect.left - containerRect.left) + (slideRect.width / 2);
+
+      // set absolute position anchored to the container
+      dotsWrap.style.position = 'absolute';
+      dotsWrap.style.bottom = '20px';
+      dotsWrap.style.left = Math.round(slideCenterX) + 'px';
+      dotsWrap.style.transform = 'translateX(-50%)';
+      dotsWrap.style.width = 'auto';
+      dotsWrap.style.boxSizing = 'border-box';
+      dotsWrap.style.padding = '0 6px';
+    }
+
+    // helper: adjust container height smoothly to fit current active slide
+    function adjustHeight(i) {
+      const slide = slides[i] || slides[0];
+      if (!slide) return;
+      // measure full height of slide content (including padding)
+      // because slides are absolutely positioned, scrollHeight gives the content height
+      const desired = slide.scrollHeight || slide.offsetHeight || 0;
+      // add a little padding so dots don't overlap content
+      const extra = 8;
+      container.style.minHeight = (desired + extra) + 'px';
+    }
+
+    // show slide at i
+    function show(i, firstInit = false) {
+      // set active classes on slides/dots
+      slides.forEach((s, si) => s.classList.toggle('active', si === i));
+      dots.forEach((d, di) => d.classList.toggle('active', di === i));
+
+      // position dots and adjust height after layout
+      // use requestAnimationFrame to ensure DOM measured values are updated
+      requestAnimationFrame(() => {
+        positionDotsForSlide(i);
+        adjustHeight(i);
+      });
+
+      // if not initial, show background alt flash for effect
+      if (!firstInit) {
+        section.classList.add('bg-alt');
+        setTimeout(() => section.classList.remove('bg-alt'), FADE_MS - 150);
+      }
+    }
+
+    function goTo(i) {
+      idx = ((i % slides.length) + slides.length) % slides.length;
+      show(idx);
+    }
+
+    function nextSlide() {
+      idx = (idx + 1) % slides.length;
+      show(idx);
+    }
+    function prevSlide() {
+      idx = (idx - 1 + slides.length) % slides.length;
+      show(idx);
+    }
+
+    // autoplay
+    let auto = null;
+    function start() {
+      stop();
+      auto = setInterval(nextSlide, 6000);
+    }
+    function stop() {
+      if (auto) { clearInterval(auto); auto = null; }
+    }
+    function restart() {
+      stop();
+      start();
+    }
+
+    // attach controls (arrows)
+    if (prev) prev.addEventListener('click', () => { prevSlide(); restart(); });
+    if (next) next.addEventListener('click', () => { nextSlide(); restart(); });
+
+    // pause on hover
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    // initial placement & show (no background flicker)
+    show(idx, true);
+    start();
+
+    // reposition on resize (debounced)
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        // re-align dots and adjust height
+        positionDotsForSlide(idx);
+        adjustHeight(idx);
+      }, 80);
+    });
+  });
+
+  // =========================
+  // Before/After Slider
+  // (kept exactly as in your file)
+  // =========================
+  (function initBeforeAfterSlider(){
+    const slider = document.querySelector('.before-after-slider');
+    if (!slider) return;
+
+    const track = slider.querySelector('.ba-track');
+    const pairs = slider.querySelectorAll('.before-after');
+    const prev = slider.querySelector('.ba-prev');
+    const next = slider.querySelector('.ba-next');
+    const dotsWrap = slider.querySelector('.ba-dots');
+
+    let current = 0, auto = null;
+
+    // Create dots
+    pairs.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'ba-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => { current = i; update(); restart(); });
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap.querySelectorAll('.ba-dot');
+
+    function update() {
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    function start() { stop(); auto = setInterval(() => { current = (current + 1) % pairs.length; update(); }, 5000); }
+    function stop() { if (auto) clearInterval(auto); }
+    function restart() { stop(); start(); }
+
+    prev.addEventListener('click', () => { current = (current - 1 + pairs.length) % pairs.length; update(); restart(); });
+    next.addEventListener('click', () => { current = (current + 1) % pairs.length; update(); restart(); });
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+
+    update(); start();
+  })();
+</script>
 </body>
 </html>
